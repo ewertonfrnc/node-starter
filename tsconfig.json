@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    /* ----- Type Checking ----- */
+    "strict": true, // ✅ Ativa todas as verificações estritas. O pilar de um bom projeto TS.
+    "noUnusedLocals": true, // 🧹 Sinaliza variáveis locais não utilizadas. Mantém o código limpo.
+    "noUnusedParameters": true, // 🧹 Sinaliza parâmetros de função não utilizados.
+    "noImplicitReturns": true, // 🛡️ Garante que todos os caminhos em uma função retornem um valor.
+    "exactOptionalPropertyTypes": true, // 🛡️ Trata propriedades opcionais com mais rigor.
+
+    /* ----- Modules ----- */
+    "module": "NodeNext", // ✅ O padrão moderno para projetos Node.js com ESM ou CJS.
+    "moduleResolution": "NodeNext", // ✅ Define como o TS procura os módulos.
+    "baseUrl": ".", // 🗺️ Necessário para configurar os 'paths' abaixo.
+    "paths": {
+      // 🗺️ A MELHOR prática para Clean Code! Evita ../../imports.
+      "@/*": ["src/*"]
+    },
+
+    /* ----- Emit ----- */
+    "outDir": "dist", // ✅ Onde seu JavaScript compilado será salvo.
+    "sourceMap": true, // 🐞 Essencial para debugar! Mapeia o JS compilado de volta para o TS original.
+    "removeComments": true, // 📦 Remove comentários do arquivo final, reduzindo o tamanho.
+
+    /* ----- Interop ----- */
+    "esModuleInterop": true, // ✅ Permite compatibilidade entre módulos CommonJS e ES Modules. Obrigatório.
+    "forceConsistentCasingInFileNames": true, // ✅ Evita problemas entre ambientes case-sensitive (Linux) e insensitive (macOS, Windows).
+
+    /* ----- Language and Environment ----- */
+    "target": "ES2022", // 🎯 Define a versão do JavaScript de saída.
+    "lib": ["ESNext", "DOM"], // 📚 Inclui as bibliotecas mais recentes do JavaScript e DOM.
+
+    /* ----- Project Structure ----- */
+    "rootDir": "src", // 📂 Define a pasta raiz do seu código fonte. Melhora a organização.
+
+    /* ----- Completeness ----- */
+    "skipLibCheck": true // ⚡️ Pula a verificação de tipos dos arquivos de declaração (.d.ts), agilizando a compilação.
+  },
+
+  /* ----- Files and Directories ----- */
+  "include": ["src/**/*"], // ➡️ Inclui todos os arquivos dentro da pasta 'src'.
+  "exclude": ["node_modules", "dist"] // ➡️ Exclui as pastas que não precisam ser verificadas ou compiladas.
+}
