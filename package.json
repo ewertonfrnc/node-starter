@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start:dev": "tsx watch src/server.ts",
-    "start:prod": "tsx dist/server.js NODE_ENV=production"
+    "start:dev": "tsx --env-file=.env.development src/server.ts",
+    "start:prod": "tsx --env-file=.env.production src/server.ts"
   },
   "keywords": [],
   "author": "",
