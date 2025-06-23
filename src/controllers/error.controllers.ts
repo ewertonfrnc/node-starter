@@ -8,6 +8,14 @@ const handleDuplicateFieldsError = (err: AppError) => {
   return new AppError(message, HttpStatusCodes.BAD_REQUEST);
 };
 
+const handleJWTError = () => {
+  return new AppError('Invalid token. Please log in again!', HttpStatusCodes.UNAUTHORIZED);
+};
+
+const handleJWTExpiredError = () => {
+  return new AppError('Your token has expired! Please log in again.', HttpStatusCodes.UNAUTHORIZED);
+};
+
 const sendErrorDev = (err: AppError, res: Response) => {
   res.status(err.statusCode).json({
     error: err,
@@ -48,6 +56,8 @@ export default function GlobalErrorHandler(
     let error = { ...err };
 
     if (error.code === 'P2002') error = handleDuplicateFieldsError(error);
+    if (error.name === 'JsonWebTokenError') error = handleJWTError();
+    if (error.name === 'TokenExpiredError') error = handleJWTExpiredError();
 
     sendErrorProd(error, res);
   }
